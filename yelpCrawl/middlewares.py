@@ -52,9 +52,9 @@ class RandomProxy(object):
     def from_crawler(cls, crawler):
         proxies = []
         proxy_list = []
-        url = 'https://dps.kdlapi.com/api/getdps/?orderid=955728569976197' \
+        url = 'https://dps.kdlapi.com/api/getdps/?orderid=995728565437721' \
               '&num=100&area=%E5%8C%97%E4%BA%AC%2C%E4%B8%8A%E6%B5%B7%2C%E6%B5%99%E6%B1%9F%2C%E6%B1%9F%E8%A5%BF%2C%E6%B2%B3%E5%8C%97%2C%E5%B9%BF%E5%B7%9E%2C%E9%A6%99%E6%B8%AF' \
-              '&pt=1&f_citycode=1&format=json&sep=1'
+              '&pt=1&f_citycode=1&format=json&sep=1&signature=sq5pzskhi33dmpt8h16ksm16br8xd45v'
         ssl._create_default_https_context = ssl._create_unverified_context
         result = request.urlopen(quote(url, safe=string.printable))
         info = result.read().decode(encoding='utf-8')

@@ -39,9 +39,9 @@ SCHEDULER_PERSIST = True
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
-DOWNLOAD_DELAY = 4
+DOWNLOAD_DELAY = 1
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-CONCURRENT_REQUESTS = 16
+# CONCURRENT_REQUESTS = 16
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -97,31 +97,32 @@ USER_AGENTS = [
 #     {'ip_port': '120.92.168.4:16816', 'user_pass': 'wh429004:ylsvtvu1'},
 #     ]
 USER_PASS = 'wh429004:ylsvtvu1'
-PROXIES = [
-    {'ip_port': '34.85.22.18:80', 'user_pass': ''},
-    {'ip_port': '47.254.83.176:8080', 'user_pass': ''},
-    {'ip_port': '173.214.170.249:8080', 'user_pass': ''},
-    {'ip_port': '192.42.252.21:8080', 'user_pass': ''},
-    {'ip_port': '192.99.191.233:8080', 'user_pass': ''},
-    {'ip_port': '198.50.172.166:1080', 'user_pass': ''},
-    {'ip_port': '24.154.112.20:8080', 'user_pass': ''},
-    {'ip_port': '198.50.172.161:1080', 'user_pass': ''},
-    {'ip_port': '186.96.112.94:1080', 'user_pass': ''},
-    {'ip_port': '138.197.167.88:8080', 'user_pass': ''},
-    {'ip_port': '165.227.42.16:80', 'user_pass': ''},
-    {'ip_port': '167.99.1.61:23', 'user_pass': ''},
-    {'ip_port': '168.235.88.16:3128', 'user_pass': ''},
-    {'ip_port': '167.99.84.71:3128', 'user_pass': ''},
-    {'ip_port': '151.106.10.103:8080', 'user_pass': ''},
-    {'ip_port': '66.70.167.113:3182', 'user_pass': ''},
-]
+# PROXIES = [
+#     {'ip_port': '34.85.22.18:80', 'user_pass': ''},
+#     {'ip_port': '47.254.83.176:8080', 'user_pass': ''},
+#     {'ip_port': '173.214.170.249:8080', 'user_pass': ''},
+#     {'ip_port': '192.42.252.21:8080', 'user_pass': ''},
+#     {'ip_port': '192.99.191.233:8080', 'user_pass': ''},
+#     {'ip_port': '198.50.172.166:1080', 'user_pass': ''},
+#     {'ip_port': '24.154.112.20:8080', 'user_pass': ''},
+#     {'ip_port': '198.50.172.161:1080', 'user_pass': ''},
+#     {'ip_port': '186.96.112.94:1080', 'user_pass': ''},
+#     {'ip_port': '138.197.167.88:8080', 'user_pass': ''},
+#     {'ip_port': '165.227.42.16:80', 'user_pass': ''},
+#     {'ip_port': '167.99.1.61:23', 'user_pass': ''},
+#     {'ip_port': '168.235.88.16:3128', 'user_pass': ''},
+#     {'ip_port': '167.99.84.71:3128', 'user_pass': ''},
+#     {'ip_port': '151.106.10.103:8080', 'user_pass': ''},
+#     {'ip_port': '66.70.167.113:3182', 'user_pass': ''},
+# ]
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
-    'yelpCrawl.middlewares.RandomProxy': 543,
     'yelpCrawl.middlewares.RandomUserAgent': 542,
+    'yelpCrawl.middlewares.RandomProxy': 543,
+
 }
 
 # Enable or disable extensions
@@ -135,7 +136,6 @@ DOWNLOADER_MIDDLEWARES = {
 # 通过配置RedisPipeline将item写入key为 spider.name : items 的redis的list中，供后面的分布式处理item
 # 这个已经由 scrapy-redis 实现，不需要我们写代码
 ITEM_PIPELINES = {
-    'yelpCrawl.pipelines.YelpcrawlPipeline': 300,
     'scrapy_redis.pipelines.RedisPipeline': 400
 }
 

@@ -26,8 +26,8 @@ class YelpSpider(RedisCrawlSpider):
     # https://www.yelp.com/biz/allegiance-financial-group-astoria?osq=Home+Insurance
     detail = LinkExtractor(allow=r"https://www.yelp.com/biz/\w+-.*?osq=.*")
     rules = (
-        Rule(list_page, follow=True),
-        Rule(page_link, follow=True),
+        Rule(list_page),
+        Rule(page_link),
         Rule(detail, callback='parse_item_detail', follow=False)
     )
 
